@@ -15,14 +15,14 @@ as a string. This enables user-defined or dynamic styling.
 ```js
 import chalkString from 'chalk-string'
 
-const addStyle = chalkString()
+const addStyles = chalkString()
 
-addStyle('red', 'input') // Same as: chalk.red('input')
-addStyle('red bold', 'input') // Same as: chalk.red.bold('input')
-addStyle('hex-ffffff', 'input') // Same as: chalk.hex('ffffff')('input')
-addStyle('rgb-10-20-30', 'input') // Same as: chalk.rgb(10, 20, 30)('input')
+addStyles('red', 'input') // Same as: chalk.red('input')
+addStyles('red bold', 'input') // Same as: chalk.red.bold('input')
+addStyles('hex-ffffff', 'input') // Same as: chalk.hex('ffffff')('input')
+addStyles('rgb-10-20-30', 'input') // Same as: chalk.rgb(10, 20, 30)('input')
 
-addStyle('invalidStyle', 'input') // Invalid styles throw an error
+addStyles('invalidStyle', 'input') // Invalid styles throw an error
 ```
 
 # Install
@@ -40,7 +40,7 @@ not `require()`.
 ## chalkString(options?)
 
 `options` [`Options?`](#options)\
-_Return value_: [`addStyle()`](#addstylestyles-input)
+_Return value_: [`addStyles()`](#addstylesstyles-input)
 
 ### Options
 
@@ -62,13 +62,13 @@ _Default_: [`process.stdout`](https://nodejs.org/api/process.html#process_proces
 Stream used to detect colors support. This should be the file or terminal where
 the colors are output.
 
-### addStyle(styles, input)
+### addStyles(styles, input)
 
 `styles` [`stylesString`](#available-styles)\
 `input` `string`\
 _Return value_: `string`
 
-Apply [styles](#available-styles) to `input` and return it.
+Apply [styles](#available-styles) to `input` then return it.
 
 # Available styles
 

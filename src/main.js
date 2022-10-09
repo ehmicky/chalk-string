@@ -9,10 +9,10 @@ export default function chalkString(opts = {}) {
   }
 
   const chalk = colorsOption(opts)
-  return addStyle.bind(undefined, chalk)
+  return addStyles.bind(undefined, chalk)
 }
 
-const addStyle = function (chalk, styles, string) {
+const addStyles = function (chalk, styles, string) {
   if (typeof styles !== 'string') {
     throw new TypeError(`Styles must be a string, not: ${styles}`)
   }

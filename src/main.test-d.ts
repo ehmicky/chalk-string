@@ -7,7 +7,7 @@ import {
 
 import chalkString, { Options, Styles } from './main.js'
 
-const chalk = chalkString()
+const addStyles = chalkString()
 chalkString({})
 expectAssignable<Options>({})
 
@@ -23,12 +23,12 @@ expectAssignable<Options>({ stream: process.stderr })
 expectError(chalkString({ stream: true }))
 expectNotAssignable<Options>({ stream: true })
 
-expectType<string>(chalk('red', 'input'))
-expectError(chalk())
-expectError(chalk(true))
-expectError(chalk('unknown'))
-expectError(chalk('red'))
-expectError(chalk('red', true))
+expectType<string>(addStyles('red', 'input'))
+expectError(addStyles())
+expectError(addStyles(true))
+expectError(addStyles('unknown'))
+expectError(addStyles('red'))
+expectError(addStyles('red', true))
 
 expectAssignable<Styles>('red')
 expectAssignable<Styles>('red blue')

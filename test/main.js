@@ -6,8 +6,8 @@ import { each } from 'test-each'
 
 import { STYLES } from './helpers/main.js'
 
-const addStyle = chalkString({ colors: true })
-const addNoStyle = chalkString({ colors: false })
+const addStyles = chalkString({ colors: true })
+const addNoStyles = chalkString({ colors: false })
 
 const hasStyle = function (string, style) {
   return string.includes(ansiStyles[style].open)
@@ -20,47 +20,47 @@ each([true, { colors: 0 }, { stream: true }], ({ title }, opts) => {
 })
 
 test('Can apply single style without arguments', (t) => {
-  t.true(hasStyle(addStyle('red', 'test'), 'red'))
+  t.true(hasStyle(addStyles('red', 'test'), 'red'))
 })
 
 test('Can apply "visible" style', (t) => {
-  t.is(addNoStyle('visible', 'test'), '')
+  t.is(addNoStyles('visible', 'test'), '')
 })
 
 each(STYLES, ({ title }, style) => {
   test(`Can apply any styles | ${title}`, (t) => {
-    t.true(hasAnsi(addStyle(style, 'test')))
+    t.true(hasAnsi(addStyles(style, 'test')))
   })
 })
 
 test('Can apply multiple styles', (t) => {
-  const string = addStyle('red bold', 'test')
+  const string = addStyles('red bold', 'test')
   t.true(hasStyle(string, 'red'))
   t.true(hasStyle(string, 'bold'))
 })
 
 test('Trim style', (t) => {
-  t.true(hasStyle(addStyle(' red ', 'test'), 'red'))
+  t.true(hasStyle(addStyles(' red ', 'test'), 'red'))
 })
 
 test('Does not allow non-existing styles', (t) => {
-  t.throws(() => addStyle('doesNotExist', 'test'), { message: /is unknown/u })
+  t.throws(() => addStyles('doesNotExist', 'test'), { message: /is unknown/u })
 })
 
 test('Does not allow non-string styles', (t) => {
-  t.throws(() => addStyle(true, 'test'), { message: /must be a string/u })
+  t.throws(() => addStyles(true, 'test'), { message: /must be a string/u })
 })
 
 test('Does not allow arguments with some styles', (t) => {
-  t.throws(() => addStyle('red-255', 'test'), { message: /No arguments/u })
+  t.throws(() => addStyles('red-255', 'test'), { message: /No arguments/u })
 })
 
 test('Ignores multiple arguments', (t) => {
-  t.false(addStyle('red', 'one', 'two').includes('two'))
+  t.false(addStyles('red', 'one', 'two').includes('two'))
 })
 
 test('Does not allow non-string arguments', (t) => {
-  t.throws(() => addStyle('red', true), {
+  t.throws(() => addStyles('red', true), {
     message: /Argument must be a string/u,
   })
 })
