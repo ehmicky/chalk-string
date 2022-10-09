@@ -41,13 +41,19 @@ const useChalkMethod = function (chalk, style) {
     throw new TypeError(`Style "${style}" is unknown.`)
   }
 
-  const normalizeArgs = ARGS_METHODS[method]
-  return normalizeArgs === undefined
-    ? getNoArgsChalkMethod(chalk, method, args)
-    : getArgsChalkMethod({ chalk, method, args, normalizeArgs })
+  return method in ARGS_METHODS
+    ? getArgsChalkMethod(chalk, method, args)
+    : getNoArgsChalkMethod(chalk, method, args)
 }
 
 const ARGS_SEPARATOR = '-'
+
+// Chalk method which receives arguments, e.g. `chalk.rgb(...)(string)`.
+// We need to make sure `this` is `chalk` when calling the method.
+const getArgsChalkMethod = function (chalk, method, args) {
+  const argsA = ARGS_METHODS[method](args, method)
+  return chalk[method](...argsA)
+}
 
 // Chalk method which does not receive any arguments, e.g. `chalk.red(string)`
 const getNoArgsChalkMethod = function (chalk, method, args) {
@@ -56,11 +62,4 @@ const getNoArgsChalkMethod = function (chalk, method, args) {
   }
 
   return chalk[method]
-}
-
-// Chalk method which receives arguments, e.g. `chalk.rgb(...)(string)`.
-// We need to make sure `this` is `chalk` when calling the method.
-const getArgsChalkMethod = function ({ chalk, method, args, normalizeArgs }) {
-  const argsA = normalizeArgs(args, method)
-  return chalk[method](...argsA)
 }

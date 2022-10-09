@@ -27,6 +27,7 @@ const validateRgbArg = function (arg, input, method) {
 
 const MAX_RGB = 255
 
+// Validate and normalize `hex-*` style
 const normalizeHexArgs = function (args, method) {
   if (args.length !== 1) {
     throw new TypeError(
