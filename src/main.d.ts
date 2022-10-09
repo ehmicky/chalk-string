@@ -1,5 +1,8 @@
 import type { Options as ColorsOptionOptions } from 'colors-option'
 
+/**
+ * Options of `chalk-string`
+ */
 export type Options = {
   /**
    * Whether colors should be enabled/disabled, regardless of terminal
@@ -58,9 +61,18 @@ type Style =
 export type Styles = Style | `${Style} ${Style}`
 
 /**
+ * Add styles to terminal strings.
  *
  * @example
  * ```js
+ * const addStyles = chalkString()
+ *
+ * addStyles('red', 'input') // Same as: chalk.red('input')
+ * addStyles('red bold', 'input') // Same as: chalk.red.bold('input')
+ * addStyles('hex-ffffff', 'input') // Same as: chalk.hex('ffffff')('input')
+ * addStyles('rgb-10-20-30', 'input') // Same as: chalk.rgb(10, 20, 30)('input')
+ *
+ * addStyles('invalidStyle', 'input') // Invalid styles throw an error
  * ```
  */
 export default function chalkString(
