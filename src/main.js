@@ -59,13 +59,38 @@ const getNoArgsChalkMethod = function (chalk, method, args) {
 // Chalk method which receives arguments, e.g. `chalk.rgb(...)(string)`.
 // We need to make sure `this` is `chalk` when calling the method.
 const getArgsChalkMethod = function ({ chalk, method, args, normalizeArgs }) {
-  const argsA = normalizeArgs(args)
+  const argsA = normalizeArgs(args, method)
   return chalk[method](...argsA)
 }
 
-const normalizeNumberArgs = function (args) {
-  return args.map(Number)
+// Validate and normalize `rgb-*` style
+const normalizeRgbArgs = function (args, method) {
+  if (args.length !== 3) {
+    throw new TypeError(
+      `There must be 3 arguments with "${method}", not ${args.length}`,
+    )
+  }
+
+  const argsA = args.map(Number)
+  argsA.forEach((arg, index) => {
+    validateRgbArg(arg, args[index], method)
+  })
+  return argsA
 }
+
+const validateRgbArg = function (arg, input, method) {
+  if (!Number.isInteger(arg) || String(arg) !== input) {
+    throw new TypeError(`Argument "${arg}" must be an integer with "${method}"`)
+  }
+
+  if (arg > MAX_RGB) {
+    throw new TypeError(
+      `Argument "${arg}" must be less than ${MAX_RGB} with "${method}"`,
+    )
+  }
+}
+
+const MAX_RGB = 255
 
 const normalizeIdentityArgs = function (args) {
   return args
@@ -73,8 +98,8 @@ const normalizeIdentityArgs = function (args) {
 
 // Those chalk methods must receive a dash-separated list of arguments
 const ARGS_METHODS = {
-  rgb: normalizeNumberArgs,
-  bgRgb: normalizeNumberArgs,
+  rgb: normalizeRgbArgs,
+  bgRgb: normalizeRgbArgs,
   hex: normalizeIdentityArgs,
   bgHex: normalizeIdentityArgs,
 }
