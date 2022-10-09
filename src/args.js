@@ -34,27 +34,30 @@ const normalizeHexArgs = function (args, method) {
     )
   }
 
-  if (args[0].includes('#')) {
-    throw new TypeError(
-      `Argument "${args[0]}" must not include # with "${method}"`,
-    )
-  }
-
-  if (args[0].length !== 3 && args[0].length !== 6) {
-    throw new TypeError(
-      `Argument "${args[0]}" must have 3 or 6 characters with "${method}"`,
-    )
-  }
-
-  if (!HEX_REGEXP.test(args[0])) {
-    throw new TypeError(
-      `Argument "${args[0]}" must be an hexadecimal string with "${method}"`,
-    )
-  }
-
+  validateHexArg(args[0], method)
   return args
 }
 
+const validateHexArg = function (arg, method) {
+  if (arg.includes('#')) {
+    throw new TypeError(`Argument "${arg}" must not include # with "${method}"`)
+  }
+
+  if (!HEX_LENGTH.has(arg.length)) {
+    throw new TypeError(
+      `Argument "${arg}" must have 3 or 6 characters with "${method}"`,
+    )
+  }
+
+  if (!HEX_REGEXP.test(arg)) {
+    throw new TypeError(
+      `Argument "${arg}" must be an hexadecimal string with "${method}"`,
+    )
+  }
+}
+
+// eslint-disable-next-line no-magic-numbers
+const HEX_LENGTH = new Set([3, 6])
 const HEX_REGEXP = /^[a-f\d]{3,6}$/iu
 
 // Those chalk methods must receive a dash-separated list of arguments
