@@ -64,11 +64,11 @@ the colors are output.
 
 ### addStyle(styles, input)
 
-`styles` [`styleString`](#available-styles)\
+`styles` [`stylesString`](#available-styles)\
 `input` `string`\
 _Return value_: `string`
 
-Apply `styles` to `input` and return it.
+Apply [styles](#available-styles) to `input` and return it.
 
 # Available styles
 

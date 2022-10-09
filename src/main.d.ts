@@ -65,4 +65,4 @@ export type Styles = Style | `${Style} ${Style}`
  */
 export default function chalkString(
   options?: Options,
-): (style: Styles, input: string) => string
+): (styles: Styles, input: string) => string
