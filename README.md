@@ -17,10 +17,12 @@ import chalkString from 'chalk-string'
 
 const addStyle = chalkString()
 
-addStyle('red', 'input') // Same as `chalk.red('input')`
-addStyle('red bold', 'input') // Same as `chalk.red.bold('input')`
-addStyle('hex-ffffff', 'input') // Same as `chalk.hex('ffffff')('input')`
-addStyle('rgb-10-20-30', 'input') // Same as `chalk.rgb(10, 20, 30)('input')`
+addStyle('red', 'input') // Same as: chalk.red('input')
+addStyle('red bold', 'input') // Same as: chalk.red.bold('input')
+addStyle('hex-ffffff', 'input') // Same as: chalk.hex('ffffff')('input')
+addStyle('rgb-10-20-30', 'input') // Same as: chalk.rgb(10, 20, 30)('input')
+
+addStyle('invalidStyle', 'input') // Invalid styles throw an error
 ```
 
 # Install
