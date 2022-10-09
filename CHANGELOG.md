@@ -1,3 +1,9 @@
+# 1.1.0
+
+## Features
+
+- Improve validation
+
 # 1.0.1
 
 ## Bug fixes
