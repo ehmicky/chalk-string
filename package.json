@@ -45,9 +45,15 @@
     "lib": "src",
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "colors-option": "^4.4.0",
+    "is-plain-obj": "^4.1.0"
+  },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^1.0.94"
+    "@ehmicky/dev-tasks": "^1.0.94",
+    "ansi-styles": "^6.2.1",
+    "has-ansi": "^5.0.1",
+    "test-each": "^5.4.1"
   },
   "engines": {
     "node": ">=14.18.0"

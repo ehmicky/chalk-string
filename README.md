@@ -6,14 +6,21 @@
 
 Chalk with style strings.
 
-Work in progress!
-
-# Features
+[Chalk](https://github.com/chalk/chalk) adds styles to terminal strings.
+`chalk-string` is a thin wrapper around it which allows specifying those styles
+as a string. This enables user-defined or dynamic styling.
 
 # Example
 
 ```js
 import chalkString from 'chalk-string'
+
+const addStyle = chalkString()
+
+addStyle('red', 'input') // Same as `chalk.red('input')`
+addStyle('red bold', 'input') // Same as `chalk.red.bold('input')`
+addStyle('hex-ffffff', 'input') // Same as `chalk.hex('ffffff')('input')`
+addStyle('rgb-10-20-30', 'input') // Same as `chalk.rgb(10, 20, 30)('input')`
 ```
 
 # Install
@@ -28,21 +35,73 @@ not `require()`.
 
 # API
 
-## chalkString(value, options?)
+## chalkString(options?)
 
-`value` `any`\
 `options` [`Options?`](#options)\
-_Return value_: [`object`](#return-value)
+_Return value_: [`addStyle()`](#addstylestyles-input)
 
 ### Options
 
-Object with the following properties.
+#### colors
 
-### Return value
+_Type_: `boolean`\
+_Default_: `undefined`
 
-Object with the following properties.
+Whether colors should be enabled/disabled, regardless of terminal support.
+Colors support is automatically detected, so this is only meant to override that
+default behavior.
+
+#### stream
+
+_Type_:
+[`Stream`](https://nodejs.org/api/stream.html#stream_class_stream_writable)\
+_Default_: [`process.stdout`](https://nodejs.org/api/process.html#process_process_stdout)
+
+Stream used to detect colors support. This should be the file or terminal where
+the colors are output.
+
+### addStyle(styles, input)
+
+`styles` [`styleString`](#available-styles)\
+`input` `string`\
+_Return value_: `string`
+
+Apply `styles` to `input` and return it.
+
+# Available styles
+
+```sh
+# Standard styles
+bold underline inverse reset
+
+# Those styles do not always work on Windows
+dim italic hidden strikethrough
+
+# Hidden when the terminal does not support colors
+visible
+
+# Basic colors
+black red green yellow blue magenta cyan white gray
+blackBright redBright greenBright yellowBright blueBright
+magentaBright cyanBright whiteBright
+
+# Advanced colors
+hex-ffffff
+rgb-255-255-255
+
+# Background colors
+bgBlack bgRed bgGreen bgYellow bgBlue bgMagenta bgCyan bgWhite bgGray
+bgBlackBright bgRedBright bgGreenBright bgYellowBright bgBlueBright
+bgMagentaBright bgCyanBright bgWhiteBright
+bgHex-* bgRgb-*
+```
 
 # Related projects
+
+- [`colors-option`](https://github.com/ehmicky/colors-option): Let users toggle
+  colors.
+- [`terminal-theme`](https://github.com/ehmicky/terminal-theme): 🎨 Use a color
+  theme for your code's terminal output
 
 # Support
 
