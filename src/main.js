@@ -92,14 +92,40 @@ const validateRgbArg = function (arg, input, method) {
 
 const MAX_RGB = 255
 
-const normalizeIdentityArgs = function (args) {
+const normalizeHexArgs = function (args, method) {
+  if (args.length !== 1) {
+    throw new TypeError(
+      `There must be exactly one argument with "${method}", not ${args.length}`,
+    )
+  }
+
+  if (args[0].includes('#')) {
+    throw new TypeError(
+      `Argument "${args[0]}" must not include # with "${method}"`,
+    )
+  }
+
+  if (args[0].length !== 3 && args[0].length !== 6) {
+    throw new TypeError(
+      `Argument "${args[0]}" must have 3 or 6 characters with "${method}"`,
+    )
+  }
+
+  if (!HEX_REGEXP.test(args[0])) {
+    throw new TypeError(
+      `Argument "${args[0]}" must be an hexadecimal string with "${method}"`,
+    )
+  }
+
   return args
 }
+
+const HEX_REGEXP = /^[a-f\d]{3,6}$/iu
 
 // Those chalk methods must receive a dash-separated list of arguments
 const ARGS_METHODS = {
   rgb: normalizeRgbArgs,
   bgRgb: normalizeRgbArgs,
-  hex: normalizeIdentityArgs,
-  bgHex: normalizeIdentityArgs,
+  hex: normalizeHexArgs,
+  bgHex: normalizeHexArgs,
 }

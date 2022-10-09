@@ -26,6 +26,7 @@ export const STYLES = [
   'cyanBright',
   'whiteBright',
   'hex-ffffff',
+  'hex-FFFFFF',
   'rgb-255-255-255',
   'bgBlack',
   'bgRed',
@@ -45,5 +46,6 @@ export const STYLES = [
   'bgCyanBright',
   'bgWhiteBright',
   'bgHex-ffffff',
+  'bgHex-FFFFFF',
   'bgRgb-255-255-255',
 ]
