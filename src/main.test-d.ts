@@ -1,8 +1,8 @@
 import { expectType, expectAssignable } from 'tsd'
 
-import templateName, { Options } from './main.js'
+import chalkString, { Options } from './main.js'
 
-expectType<object>(templateName(true))
+expectType<object>(chalkString(true))
 
-templateName(true, {})
+chalkString(true, {})
 expectAssignable<Options>({})

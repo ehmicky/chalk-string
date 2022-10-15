@@ -1,6 +1,6 @@
 import test from 'ava'
-import templateName from 'template-name'
+import chalkString from 'chalk-string'
 
 test('Dummy test', (t) => {
-  t.true(templateName(true))
+  t.true(chalkString(true))
 })
