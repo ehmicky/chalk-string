@@ -5,7 +5,7 @@ import {
   expectError,
 } from 'tsd'
 
-import chalkString, { Options, Styles } from './main.js'
+import chalkString, { Options, Styles } from 'chalk-string'
 
 const addStyles = chalkString()
 chalkString({})
