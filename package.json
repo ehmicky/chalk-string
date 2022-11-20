@@ -55,7 +55,7 @@
     "is-plain-obj": "^4.1.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^1.0.105",
+    "@ehmicky/dev-tasks": "^1.0.106",
     "ansi-styles": "^6.2.1",
     "has-ansi": "^5.0.1",
     "test-each": "^5.6.0"
