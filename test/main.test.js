@@ -4,7 +4,7 @@ import chalkString from 'chalk-string'
 import hasAnsi from 'has-ansi'
 import { each } from 'test-each'
 
-import { STYLES } from './helpers/main.js'
+import { STYLES } from './helpers/main.test.js'
 
 const addStyles = chalkString({ colors: true })
 const addNoStyles = chalkString({ colors: false })
