@@ -4,7 +4,57 @@ import chalkString from 'chalk-string'
 import hasAnsi from 'has-ansi'
 import { each } from 'test-each'
 
-import { STYLES } from './helpers/main.test.js'
+// All allowed styles
+const STYLES = [
+  'bold',
+  'underline',
+  'inverse',
+  'reset',
+  'dim',
+  'italic',
+  'hidden',
+  'strikethrough',
+  'black',
+  'red',
+  'green',
+  'yellow',
+  'blue',
+  'magenta',
+  'cyan',
+  'white',
+  'gray',
+  'blackBright',
+  'redBright',
+  'greenBright',
+  'yellowBright',
+  'blueBright',
+  'magentaBright',
+  'cyanBright',
+  'whiteBright',
+  'hex-ffffff',
+  'hex-FFFFFF',
+  'rgb-255-255-255',
+  'bgBlack',
+  'bgRed',
+  'bgGreen',
+  'bgYellow',
+  'bgBlue',
+  'bgMagenta',
+  'bgCyan',
+  'bgWhite',
+  'bgGray',
+  'bgBlackBright',
+  'bgRedBright',
+  'bgGreenBright',
+  'bgYellowBright',
+  'bgBlueBright',
+  'bgMagentaBright',
+  'bgCyanBright',
+  'bgWhiteBright',
+  'bgHex-ffffff',
+  'bgHex-FFFFFF',
+  'bgRgb-255-255-255',
+]
 
 const addStyles = chalkString({ colors: true })
 const addNoStyles = chalkString({ colors: false })
