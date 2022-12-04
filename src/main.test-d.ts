@@ -1,6 +1,7 @@
-import { expectType, expectAssignable, expectNotAssignable } from 'tsd'
+import { stderr } from 'node:process'
 
-import chalkString, { Options, Styles } from 'chalk-string'
+import chalkString, { type Options, type Styles } from 'chalk-string'
+import { expectType, expectAssignable, expectNotAssignable } from 'tsd'
 
 const addStyles = chalkString()
 chalkString({})
@@ -14,8 +15,8 @@ expectAssignable<Options>({ colors: undefined })
 chalkString({ colors: 1 })
 expectNotAssignable<Options>({ colors: 1 })
 
-chalkString({ stream: process.stderr })
-expectAssignable<Options>({ stream: process.stderr })
+chalkString({ stream: stderr })
+expectAssignable<Options>({ stream: stderr })
 // @ts-expect-error
 chalkString({ stream: true })
 expectNotAssignable<Options>({ stream: true })
