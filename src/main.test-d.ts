@@ -1,9 +1,4 @@
-import {
-  expectType,
-  expectAssignable,
-  expectNotAssignable,
-  expectError,
-} from 'tsd'
+import { expectType, expectAssignable, expectNotAssignable } from 'tsd'
 
 import chalkString, { Options, Styles } from 'chalk-string'
 
@@ -15,20 +10,27 @@ chalkString({ colors: true })
 expectAssignable<Options>({ colors: true })
 chalkString({ colors: undefined })
 expectAssignable<Options>({ colors: undefined })
-expectError(chalkString({ colors: 1 }))
+// @ts-expect-error
+chalkString({ colors: 1 })
 expectNotAssignable<Options>({ colors: 1 })
 
 chalkString({ stream: process.stderr })
 expectAssignable<Options>({ stream: process.stderr })
-expectError(chalkString({ stream: true }))
+// @ts-expect-error
+chalkString({ stream: true })
 expectNotAssignable<Options>({ stream: true })
 
 expectType<string>(addStyles('red', 'input'))
-expectError(addStyles())
-expectError(addStyles(true))
-expectError(addStyles('unknown'))
-expectError(addStyles('red'))
-expectError(addStyles('red', true))
+// @ts-expect-error
+addStyles()
+// @ts-expect-error
+addStyles(true)
+// @ts-expect-error
+addStyles('unknown')
+// @ts-expect-error
+addStyles('red')
+// @ts-expect-error
+addStyles('red', true)
 
 expectAssignable<Styles>('red')
 expectAssignable<Styles>('red blue')
