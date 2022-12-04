@@ -3,7 +3,7 @@ import type { Options as ColorsOptionOptions } from 'colors-option'
 /**
  * Options of `chalk-string`
  */
-export type Options = {
+export interface Options {
   /**
    * Whether colors should be enabled/disabled, regardless of terminal
    * support. Colors support is automatically detected, so this is only meant
