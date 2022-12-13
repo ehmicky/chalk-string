@@ -1,5 +1,5 @@
 // Validate and normalize `rgb-*` style
-const normalizeRgbArgs = function (args, method) {
+const normalizeRgbArgs = (args, method) => {
   if (args.length !== 3) {
     throw new TypeError(
       `There must be 3 arguments with "${method}", not ${args.length}`,
@@ -13,7 +13,7 @@ const normalizeRgbArgs = function (args, method) {
   return argsA
 }
 
-const validateRgbArg = function (arg, input, method) {
+const validateRgbArg = (arg, input, method) => {
   if (!Number.isInteger(arg) || String(arg) !== input) {
     throw new TypeError(`Argument "${arg}" must be an integer with "${method}"`)
   }
@@ -28,7 +28,7 @@ const validateRgbArg = function (arg, input, method) {
 const MAX_RGB = 255
 
 // Validate and normalize `hex-*` style
-const normalizeHexArgs = function (args, method) {
+const normalizeHexArgs = (args, method) => {
   if (args.length !== 1) {
     throw new TypeError(
       `There must be exactly one argument with "${method}", not ${args.length}`,
@@ -39,7 +39,7 @@ const normalizeHexArgs = function (args, method) {
   return args
 }
 
-const validateHexArg = function (arg, method) {
+const validateHexArg = (arg, method) => {
   if (arg.includes('#')) {
     throw new TypeError(`Argument "${arg}" must not include # with "${method}"`)
   }

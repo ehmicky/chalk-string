@@ -59,9 +59,7 @@ const STYLES = [
 const addStyles = chalkString({ colors: true })
 const addNoStyles = chalkString({ colors: false })
 
-const hasStyle = function (string, style) {
-  return string.includes(ansiStyles[style].open)
-}
+const hasStyle = (string, style) => string.includes(ansiStyles[style].open)
 
 each([true, { colors: 0 }, { stream: true }], ({ title }, opts) => {
   test(`Validate options | ${title}`, (t) => {
