@@ -58,7 +58,7 @@
     "@ehmicky/dev-tasks": "^2.0.80",
     "ansi-styles": "^6.2.1",
     "has-ansi": "^5.0.1",
-    "test-each": "^5.7.1"
+    "test-each": "^6.0.0"
   },
   "engines": {
     "node": ">=16.17.0"
