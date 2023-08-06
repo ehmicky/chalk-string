@@ -42,7 +42,10 @@
   ],
   "license": "MIT",
   "homepage": "https://www.github.com/ehmicky/chalk-string",
-  "repository": "ehmicky/chalk-string",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehmicky/chalk-string.git"
+  },
   "bugs": {
     "url": "https://github.com/ehmicky/chalk-string/issues"
   },
