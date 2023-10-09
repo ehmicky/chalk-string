@@ -10,6 +10,15 @@ Chalk with style strings.
 `chalk-string` is a thin wrapper around it which allows specifying those styles
 as a string. This enables user-defined or dynamic styling.
 
+# Hire me
+
+Please
+[reach out](https://www.linkedin.com/feed/update/urn:li:activity:7117265228068716545/)
+if you're looking for a Node.js API or CLI engineer (11 years of experience).
+Most recently I have been [Netlify Build](https://github.com/netlify/build)'s
+and [Netlify Plugins](https://www.netlify.com/products/build/plugins/)'
+technical lead for 2.5 years. I am available for full-time remote positions.
+
 # Example
 
 ```js
