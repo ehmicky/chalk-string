@@ -1,7 +1,7 @@
 import { stderr } from 'node:process'
 
 import chalkString, { type Options, type Styles } from 'chalk-string'
-import { expectType, expectAssignable, expectNotAssignable } from 'tsd'
+import { expectAssignable, expectNotAssignable, expectType } from 'tsd'
 
 const addStyles = chalkString()
 chalkString({})
