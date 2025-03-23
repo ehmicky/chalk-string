@@ -54,7 +54,7 @@
     "lib": "src"
   },
   "dependencies": {
-    "colors-option": "^6.0.0",
+    "colors-option": "^6.0.1",
     "is-plain-obj": "^4.1.0"
   },
   "devDependencies": {
