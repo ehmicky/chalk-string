@@ -65,16 +65,15 @@ export type Styles = Style | `${Style} ${Style}`
  *
  * @example
  * ```js
- * const addStyles = chalkString()
+ * chalkString('red')('input') // Same as: chalk.red('input')
+ * chalkString('red bold')('input') // Same as: chalk.red.bold('input')
+ * chalkString('hex-ffffff')('input') // Same as: chalk.hex('ffffff')('input')
+ * chalkString('rgb-10-20-30')('input') // Same as: chalk.rgb(10, 20, 30)('input')
  *
- * addStyles('red', 'input') // Same as: chalk.red('input')
- * addStyles('red bold', 'input') // Same as: chalk.red.bold('input')
- * addStyles('hex-ffffff', 'input') // Same as: chalk.hex('ffffff')('input')
- * addStyles('rgb-10-20-30', 'input') // Same as: chalk.rgb(10, 20, 30)('input')
- *
- * addStyles('invalidStyle', 'input') // Invalid styles throw an error
+ * chalkString('invalidStyle')('input') // Invalid styles throw an error
  * ```
  */
 export default function chalkString(
+  styles: Styles,
   options?: Options,
-): (styles: Styles, input: string) => string
+): (input: string) => string

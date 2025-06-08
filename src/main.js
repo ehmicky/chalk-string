@@ -1,36 +1,23 @@
 import colorsOption from 'colors-option'
-import isPlainObj from 'is-plain-obj'
 
 import { ARGS_METHODS } from './args.js'
 
 // Thin wrapper around `chalk` which adds support for specifying styles as
 // strings
-const chalkString = (opts = {}) => {
-  if (!isPlainObj(opts)) {
-    throw new TypeError(`Options must be a plain object: ${opts}`)
-  }
-
-  const chalk = colorsOption(opts)
-  return addStyles.bind(undefined, chalk)
-}
-
-export default chalkString
-
-const addStyles = (chalk, styles, string) => {
+const chalkString = (styles, opts) => {
   if (typeof styles !== 'string') {
     throw new TypeError(`Styles must be a string, not: ${styles}`)
   }
 
-  if (typeof string !== 'string') {
-    throw new TypeError(`Argument must be a string, not: ${string}`)
-  }
-
+  const chalk = colorsOption(opts)
   const chalkMethod = styles
     .trim()
     .split(STYLE_SEPARATOR)
     .reduce(useChalkMethod, chalk)
-  return chalkMethod(string)
+  return addStyles.bind(undefined, chalkMethod)
 }
+
+export default chalkString
 
 const STYLE_SEPARATOR = /\s+/u
 
@@ -64,4 +51,12 @@ const getNoArgsChalkMethod = (chalk, method, args) => {
   }
 
   return chalk[method]
+}
+
+const addStyles = (chalkMethod, string) => {
+  if (typeof string !== 'string') {
+    throw new TypeError(`Argument must be a string, not: ${string}`)
+  }
+
+  return chalkMethod(string)
 }
