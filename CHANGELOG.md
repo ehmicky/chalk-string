@@ -1,3 +1,19 @@
+# 4.0.0
+
+## Breaking changes
+
+- The [main method](README.md#chalkstringstyles-options) has been split into two
+  stages. This improves performances.
+
+```diff
+import chalkString from 'chalk-string'
+
+- // Before:
+- chalkString('red', 'input')
++ // Now:
++ chalkString('red')('input')
+```
+
 # 3.0.1
 
 ## Documentation
