@@ -54,7 +54,7 @@
     "lib": "src"
   },
   "dependencies": {
-    "colors-option": "^6.1.0"
+    "colors-option": "^6.1.1"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^3.0.34",
